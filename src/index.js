@@ -8,7 +8,7 @@ const cloneResponse = response => {
 		throw new TypeError('Parameter `response` must be a response stream.');
 	}
 
-	const clone = new PassThrough();
+	const clone = new PassThrough({ autoDestroy: false });
 	mimicResponse(response, clone);
 
 	return response.pipe(clone);
